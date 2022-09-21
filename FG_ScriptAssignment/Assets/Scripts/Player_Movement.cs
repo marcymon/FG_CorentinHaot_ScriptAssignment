@@ -1,21 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float jumpHeight = 50f;
+
+    bool isJumping;
+
+    Rigidbody rb;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();        
+    }
+    void Update()
+    {        
+        MovePlayer();
+        JumpPlayer();
     }
 
-    // Update is called once per frame
-    void Update()
+    void MovePlayer()
     {
-       if (Input.GetKeyDown(KeyCode.Z))
-       {
-            transform.Translate(Vector3.forward);
-       } 
+        float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+        float zValue = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+
+        transform.Translate(xValue,0,zValue);        
+    }
+
+    void JumpPlayer()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddRelativeForce(Vector3.up * jumpHeight);                      
+
+            //Debug.Log("I am jumping");            
+        }
+    }
+    
+    
+    
+    private void OnCollisionEnter(Collision collision)
+    { 
+        if (collision.gameObject.tag == "Ground Checker")
+        {
+            //Jumping = true;
+            Debug.Log("I cannot jump");
+        }
+        else
+        {
+            //Jumping = false;
+            Debug.Log("I can jump");
+        }
     }
 }
+    
+
