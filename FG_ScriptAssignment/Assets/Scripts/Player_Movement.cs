@@ -44,15 +44,19 @@ public class Player_Movement : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     { 
-        if (collision.gameObject.tag == "Ground Checker")
+        if (collision.gameObject.tag == "Ground Check")
+        {
+            //Jumping = true;
+            Debug.Log("I can jump");
+        }
+        
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground Check")
         {
             //Jumping = true;
             Debug.Log("I cannot jump");
-        }
-        else
-        {
-            //Jumping = false;
-            Debug.Log("I can jump");
         }
     }
 }
