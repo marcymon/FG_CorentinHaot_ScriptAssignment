@@ -32,7 +32,7 @@ public class Player_Movement : MonoBehaviour
 
     void JumpPlayer()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
         {
             rb.AddRelativeForce(Vector3.up * jumpHeight);                      
 
@@ -46,8 +46,8 @@ public class Player_Movement : MonoBehaviour
     { 
         if (collision.gameObject.tag == "Ground Check")
         {
-            //Jumping = true;
-            Debug.Log("I can jump");
+            isJumping = false;
+            //Debug.Log("I can jump");
         }
         
     }
@@ -55,8 +55,8 @@ public class Player_Movement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground Check")
         {
-            //Jumping = true;
-            Debug.Log("I cannot jump");
+            isJumping = true;
+            //Debug.Log("I cannot jump");
         }
     }
 }
