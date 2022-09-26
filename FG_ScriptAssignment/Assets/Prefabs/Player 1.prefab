@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpHeight: 250
+  playerTurn: {fileID: 0}
 --- !u!54 &8976947390369614813
 Rigidbody:
   m_ObjectHideFlags: 0

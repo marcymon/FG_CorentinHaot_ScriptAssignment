@@ -5,8 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
-{
-    [SerializeField] ActivePlayerManager manager;
+{    
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float jumpHeight = 50f;
     [SerializeField] PlayerTurn playerTurn;
@@ -21,14 +20,12 @@ public class Player_Movement : MonoBehaviour
     }
     void Update()
     {
-        bool IsPlayerTurn = playerTurn.IsPlayerTurn();
-        if (IsPlayerTurn)
-        {
+        //bool IsPlayerTurn = playerTurn.IsPlayerTurn();
+        //if (IsPlayerTurn)
+        //{
             MovePlayer();
             JumpPlayer();
-        }
-        MovePlayer();
-        JumpPlayer();
+        //}       
     }
 
     void MovePlayer()
