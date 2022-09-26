@@ -734,6 +734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 601517520}
   - component: {fileID: 601517521}
+  - component: {fileID: 601517522}
   m_Layer: 0
   m_Name: TurnManager
   m_TagString: Untagged
@@ -771,9 +772,24 @@ MonoBehaviour:
   player1: {fileID: 8965835560976793237}
   player2: {fileID: 2004016469}
   maxTimePerTurn: 5
-  timeBetweenTurns: 0
+  timeBetweenTurns: 2
   clock: {fileID: 0}
   seconds: {fileID: 0}
+--- !u!114 &601517522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601517519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b219167d1a0fc7c43a125bc61d36fa6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 601517521}
+  rotationSpeed: 20
+  walkingSpeed: 2
 --- !u!1 &624420344
 GameObject:
   m_ObjectHideFlags: 0
@@ -3845,8 +3861,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5693e9380166ca94d8c2a0165b96046f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   moveSpeed: 5
   jumpHeight: 250
+  playerTurn: {fileID: 0}
 --- !u!4 &2004016468
 Transform:
   m_ObjectHideFlags: 0

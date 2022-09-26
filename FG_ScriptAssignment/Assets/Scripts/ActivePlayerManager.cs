@@ -36,7 +36,7 @@ public class ActivePlayerManager : MonoBehaviour
                 ChangeTurn();
                 ResetTimers();
             }
-            UpdateTimeVisuals();
+            //UpdateTimeVisuals();
         }
         else 
         {
@@ -66,7 +66,7 @@ public class ActivePlayerManager : MonoBehaviour
         }
 
         ResetTimers();
-        UpdateTimeVisuals();
+        //UpdateTimeVisuals();
     }
 
     private void ResetTimers()
@@ -75,9 +75,10 @@ public class ActivePlayerManager : MonoBehaviour
         currentDelay = timeBetweenTurns;
     }
 
-    private void UpdateTimeVisuals()
+   /* private void UpdateTimeVisuals()
     {
         clock.fillAmount = 1 - (currentTurnTime / maxTimePerTurn);
         seconds.text = Mathf.RoundToInt(maxTimePerTurn - currentTurnTime).ToString();
     }
+   */
 }
