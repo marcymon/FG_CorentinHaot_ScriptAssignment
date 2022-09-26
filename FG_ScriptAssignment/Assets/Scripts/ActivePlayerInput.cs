@@ -7,17 +7,18 @@ public class ActivePlayerInput : MonoBehaviour
     [SerializeField] private ActivePlayerManager manager;
     [SerializeField] private float horizontalSpeed = 2f;
     [SerializeField] private float walkingSpeed;
-    [SerializeField] float jumpHeight = 5f;
+    //[SerializeField] float jumpHeight = 5f;
 
-    bool isJumping;
+    //bool isJumping;
 
     
 
     void Update()
     {
         PlayerCanMove();
+          
     }
-
+/*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground Check")
@@ -35,6 +36,7 @@ public class ActivePlayerInput : MonoBehaviour
             //Debug.Log("I cannot jump");
         }
     }
+  */
 
     void PlayerCanMove()
     {
@@ -58,11 +60,12 @@ public class ActivePlayerInput : MonoBehaviour
                 currentPlayer.GetComponent<ActivePlayerWeapon>().ShootLaser();
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
+            /*if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
             {
                 ActivePlayer currentPlayer = manager.GetCurrentPlayer();
                 currentPlayer.rb.AddRelativeForce(Vector3.up * jumpHeight);             
             }
+            */
         }
     }
    
