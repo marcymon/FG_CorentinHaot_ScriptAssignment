@@ -10,9 +10,12 @@ public class ActivePlayerInput : MonoBehaviour
     [SerializeField] private float walkingSpeed = 2f;
     [SerializeField] private float pitchClamp = 90f;
     [SerializeField] private ActivePlayerManager manager;
+    
+    
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
+    
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class ActivePlayerInput : MonoBehaviour
     void Update()
     {
         PlayerCanMove();
-        ReadRotationInput();          
+        ReadRotationInput();        
     }
 
     void ReadRotationInput()
@@ -38,12 +41,21 @@ public class ActivePlayerInput : MonoBehaviour
 
 
         ActivePlayer currentPlayer = manager.GetCurrentPlayer();
-        currentPlayer.transform.localEulerAngles = new Vector3(pitch, 0.0f, 0.0f);
+        //currentPlayer.transform.localEulerAngles = new Vector3(pitch, 0.0f, 0.0f);
         currentPlayer.transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
         transform.localEulerAngles = new Vector3(pitch, 0.0f, 0.0f);
         transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
-        characterCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-        //characterCamera.transform.localEulerAngles = new Vector3(0.0f, yaw, 0.0f);
+
+        
+
+        
+        
+        //characterCamera.transform.position = currentPlayer.transform.position;
+
+        
+
+        
+        characterCamera.transform.localEulerAngles = new Vector3(pitch, yaw, 0.0f);
 
 
     }
