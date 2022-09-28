@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cinemachine;
 
 public class ActivePlayerManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ActivePlayerManager : MonoBehaviour
     [SerializeField] private float timeBetweenTurns;
     [SerializeField] private Image clock;
     [SerializeField] private TextMeshProUGUI seconds;
+    [SerializeField] private CinemachineVirtualCamera[] cameras;
 
     private ActivePlayer currentPlayer;
     private float currentTurnTime;
@@ -59,10 +61,14 @@ public class ActivePlayerManager : MonoBehaviour
         if (player1 == currentPlayer)
         {
             currentPlayer = player2;
+            cameras[0].gameObject.SetActive(false);
+            cameras[1].gameObject.SetActive(true);
         }
         else if (player2 == currentPlayer)
         {
             currentPlayer = player1;
+            cameras[1].gameObject.SetActive(false);
+            cameras[0].gameObject.SetActive(true);
         }
 
         ResetTimers();

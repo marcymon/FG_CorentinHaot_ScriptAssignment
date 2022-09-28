@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TurnManager : MonoBehaviour
 {
     private static TurnManager instance;
@@ -9,9 +10,12 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private PlayerTurn playerTwo;
     [SerializeField] private float timeBetweenTurns;
     
+    
     private int currentPlayerIndex;
     private bool waitingForNextTurn;
     private float turnDelay;
+
+
 
     private void Awake()
     {
@@ -59,14 +63,16 @@ public class TurnManager : MonoBehaviour
     }
 
     private void ChangeTurn()
-    {
+    {       
+        
         if (currentPlayerIndex == 1)
         {
             currentPlayerIndex = 2;
+           
         }
         else if (currentPlayerIndex == 2)
-        {
-            currentPlayerIndex = 1;
+        {            
+            currentPlayerIndex = 1;           
         }
     }
 }

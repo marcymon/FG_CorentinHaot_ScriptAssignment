@@ -10,20 +10,22 @@ public class ActivePlayerInput : MonoBehaviour
     [SerializeField] private float walkingSpeed = 2f;
     [SerializeField] private float pitchClamp = 90f;
     [SerializeField] private ActivePlayerManager manager;
+    [SerializeField] float jumpHeight = 5f;
     
     
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
     
+    bool isJumping;   
+    
 
     private void Start()
     {
-        Cursor.visible = false;
+        Cursor.visible = false;      
+        
     }
-    //[SerializeField] float jumpHeight = 5f;
 
-    //bool isJumping;
 
 
 
@@ -44,20 +46,7 @@ public class ActivePlayerInput : MonoBehaviour
         //currentPlayer.transform.localEulerAngles = new Vector3(pitch, 0.0f, 0.0f);
         currentPlayer.transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
         transform.localEulerAngles = new Vector3(pitch, 0.0f, 0.0f);
-        transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
-
-        
-
-        
-        
-        //characterCamera.transform.position = currentPlayer.transform.position;
-
-        
-
-        
-        characterCamera.transform.localEulerAngles = new Vector3(pitch, yaw, 0.0f);
-
-
+        transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);     
     }
 
 
@@ -65,54 +54,32 @@ public class ActivePlayerInput : MonoBehaviour
     {
         if (manager.PlayerCanPlay())
         {
+            ActivePlayer currentPlayer = manager.GetCurrentPlayer();
             if (Input.GetAxis("Horizontal") != 0)
             {
-                ActivePlayer currentPlayer = manager.GetCurrentPlayer();
+                
                 currentPlayer.transform.Translate(transform.right * walkingSpeed * Time.deltaTime * Input.GetAxis("Horizontal"), Space.World);
             }
 
             if (Input.GetAxis("Vertical") != 0)
             {
-                ActivePlayer currentPlayer = manager.GetCurrentPlayer();
+                
                 currentPlayer.transform.Translate(transform.forward * walkingSpeed * Time.deltaTime * Input.GetAxis("Vertical"), Space.World);
             }
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                ActivePlayer currentPlayer = manager.GetCurrentPlayer();
+                
                 currentPlayer.GetComponent<ActivePlayerWeapon>().ShootLaser();
             }
 
-            
-            
-/*
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground Check")
-        {
-            isJumping = false;
-            //Debug.Log("I can jump");
-        }
-
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground Check")
-        {
-            isJumping = true;
-            //Debug.Log("I cannot jump");
-        }
-    }
-  */            
-            
-            
-                /*if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
+            if (Input.GetKeyDown(KeyCode.Space) && currentPlayer.GetComponent<PlayerTurn>().isJumping  == false)
             {
-                ActivePlayer currentPlayer = manager.GetCurrentPlayer();
-                currentPlayer.rb.AddRelativeForce(Vector3.up * jumpHeight);             
+                
+                currentPlayer.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * jumpHeight);
             }
-            */
         }
-    }
-   
+    }       
+
+           
 }
