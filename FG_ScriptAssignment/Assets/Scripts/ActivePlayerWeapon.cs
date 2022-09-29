@@ -11,6 +11,8 @@ public class ActivePlayerWeapon : MonoBehaviour
     [SerializeField] private MeshRenderer weaponRenderer;
     [SerializeField] private GameObject[] weaponMeshes;
 
+
+
     private WeaponPickup currentWeapon;
     private float rayDelay;
 
@@ -66,6 +68,7 @@ public class ActivePlayerWeapon : MonoBehaviour
 
     public void ShootLaser()
     {
+        
         RaycastHit result;
         bool thereWasHit = Physics.Raycast(weaponBarrel.position, transform.forward, out result, Mathf.Infinity);
 

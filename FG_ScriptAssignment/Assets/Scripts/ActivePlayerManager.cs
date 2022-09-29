@@ -14,13 +14,16 @@ public class ActivePlayerManager : MonoBehaviour
     [SerializeField] private Image clock;
     [SerializeField] private TextMeshProUGUI seconds;
     [SerializeField] private CinemachineVirtualCamera[] cameras;
+    //[SerializeField] private CinemachineFreeLook[] freeCameras;
 
     private ActivePlayer currentPlayer;
     private float currentTurnTime;
     private float currentDelay;
+    
 
     void Start()
     {
+
         player1.AssignManager(this);
         player2.AssignManager(this);
 
@@ -38,7 +41,7 @@ public class ActivePlayerManager : MonoBehaviour
                 ChangeTurn();
                 ResetTimers();
             }
-            //UpdateTimeVisuals();
+            UpdateTimeVisuals();
         }
         else 
         {
@@ -63,16 +66,22 @@ public class ActivePlayerManager : MonoBehaviour
             currentPlayer = player2;
             cameras[0].gameObject.SetActive(false);
             cameras[1].gameObject.SetActive(true);
+            
+            //freeCameras[0].gameObject.SetActive(false);
+            //freeCameras[1].gameObject.SetActive(true);
         }
         else if (player2 == currentPlayer)
         {
             currentPlayer = player1;
             cameras[1].gameObject.SetActive(false);
             cameras[0].gameObject.SetActive(true);
+
+            //freeCameras[1].gameObject.SetActive(false);
+            //freeCameras[0].gameObject.SetActive(true);
         }
 
         ResetTimers();
-        //UpdateTimeVisuals();
+        UpdateTimeVisuals();        
     }
 
     private void ResetTimers()
@@ -81,10 +90,9 @@ public class ActivePlayerManager : MonoBehaviour
         currentDelay = timeBetweenTurns;
     }
 
-   /* private void UpdateTimeVisuals()
+    private void UpdateTimeVisuals()
     {
         clock.fillAmount = 1 - (currentTurnTime / maxTimePerTurn);
         seconds.text = Mathf.RoundToInt(maxTimePerTurn - currentTurnTime).ToString();
-    }
-   */
+    }    
 }

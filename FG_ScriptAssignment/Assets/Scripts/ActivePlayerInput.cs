@@ -13,16 +13,17 @@ public class ActivePlayerInput : MonoBehaviour
     [SerializeField] float jumpHeight = 5f;
     
     
+    
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
     
-    bool isJumping;   
-    
+    bool isJumping;      
 
+        
     private void Start()
     {
-        Cursor.visible = false;      
+        Cursor.visible = false;
         
     }
 
@@ -32,7 +33,7 @@ public class ActivePlayerInput : MonoBehaviour
     void Update()
     {
         PlayerCanMove();
-        ReadRotationInput();        
+        ReadRotationInput();
     }
 
     void ReadRotationInput()
@@ -67,7 +68,7 @@ public class ActivePlayerInput : MonoBehaviour
                 currentPlayer.transform.Translate(transform.forward * walkingSpeed * Time.deltaTime * Input.GetAxis("Vertical"), Space.World);
             }
 
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 
                 currentPlayer.GetComponent<ActivePlayerWeapon>().ShootLaser();

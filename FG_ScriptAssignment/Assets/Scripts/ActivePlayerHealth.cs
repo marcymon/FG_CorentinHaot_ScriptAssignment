@@ -31,8 +31,10 @@ public class ActivePlayerHealth : MonoBehaviour
             // Set back to initial position
             transform.position = initialPosition;
             transform.eulerAngles = initialRotation;
+            currentHealth = maxHealth;
+            healthBar.fillAmount = 1f;
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
