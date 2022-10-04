@@ -7,11 +7,12 @@ public class EnvDeath : MonoBehaviour
     [SerializeField] private ActivePlayerManager manager;
     
     public GameObject checkPoint;
-    
-    // Start is called before the first frame update
+
+    Vector3 lastCheckpoint;
+
     void Start()
     {
-        
+        lastCheckpoint = checkPoint.transform.position;
     }
 
     // Update is called once per frame
@@ -27,6 +28,14 @@ public class EnvDeath : MonoBehaviour
         {
             Debug.Log("I bumped");
             transform.position = checkPoint.transform.position;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("CheckPoint"))
+        {
+             lastCheckpoint = this.gameObject.transform.position;
         }
     }
 }
