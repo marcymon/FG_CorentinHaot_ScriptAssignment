@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground Check
   - Win
+  - CheckPoint
+  - GM
+  - Death
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,7 @@ public class WinScreen : MonoBehaviour
     public GameObject winText;
     public GameObject reloadButton;
     public GameObject playerMoving;
-    
+
     bool playerWin;
     
     void Start()
