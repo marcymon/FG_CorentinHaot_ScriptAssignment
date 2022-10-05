@@ -7,7 +7,7 @@ public class Spinner : MonoBehaviour
     [SerializeField] float xAngle;
     [SerializeField] float yAngle;
     [SerializeField] float zAngle;
-    [SerializeField] int speed;
+    [SerializeField] float speed;
     // Start is called before the first frame update
     void Start()
     {

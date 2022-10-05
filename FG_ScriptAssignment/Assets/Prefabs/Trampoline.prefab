@@ -110,5 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f37da2dd42fc8ab479ddd8dc57438a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerHeight: 5
+  powerHeight: 500
   manager: {fileID: 0}
