@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6550732789780451168}
   - component: {fileID: 965037444694157087}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: GoundCheckCube
   m_TagString: Ground Check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -6,12 +6,17 @@ using UnityEngine.UI;
 
 public class WinScreen : MonoBehaviour
 {
+    [SerializeField] ParticleSystem winParticles1;
+    [SerializeField] ParticleSystem winParticles2;
+    [SerializeField] ParticleSystem winParticles3;
+    
     public GameObject winText;
     public GameObject reloadButton;
     public GameObject playerMoving;
 
     bool playerWin;
-    
+    bool played;
+
     void Start()
     {
         playerWin = false;
@@ -25,12 +30,16 @@ public class WinScreen : MonoBehaviour
    
     public void Update()
     {        
-        if (playerWin == true)
+        if (playerWin == true && !played)
         {
+            winParticles1.Play();
+            winParticles2.Play();
+            winParticles3.Play();
             winText.SetActive(true);
             reloadButton.SetActive(true);
             playerMoving.SetActive(false);
             Cursor.visible = true;
+            played = true;
         }
         
     }   
@@ -45,6 +54,8 @@ public class WinScreen : MonoBehaviour
         {
             playerWin = true;
             Debug.Log(collision.gameObject.name + " win !");
+
+            
         }
     }
 }
